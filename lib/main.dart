@@ -1,20 +1,20 @@
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:olx_by_hmb/blocks/drawer-block.dart';
-import 'package:olx_by_hmb/blocks/home-bloc.dart';
-import 'package:olx_by_hmb/pages/home.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'blocs/drawer_bloc.dart';
+import 'blocs/home_bloc.dart';
+import 'screens/base/base_screen.dart';
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<DrawerBlock>(
-          create: (_) => DrawerBlock(),
+        Provider<DrawerBloc>(
+          create: (_) => DrawerBloc(),
           dispose: (context, value) => value.dispose(),
         ),
         Provider<HomeBloc>(
@@ -23,13 +23,17 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        title: 'XLO',
         debugShowCheckedModeBanner: false,
-        title: 'OLX Clone - by hmb',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          primarySwatch: Colors.blue,
         ),
-        home: Home(),
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [Locale('pt', 'BR')],
+        home: BaseScreen(),
       ),
     );
   }

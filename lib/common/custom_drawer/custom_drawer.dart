@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:olx_by_hmb/components/custom-header.dart';
-import 'package:olx_by_hmb/components/drawer-body.dart';
+
+import 'widgets/custom_header.dart';
+import 'widgets/icon_section.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -9,8 +10,10 @@ class CustomDrawer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           CustomHeader(),
-          DrawerBody(),
-          Divider(),
+          IconSection(),
+          Divider(
+            color: Colors.grey[500],
+          ),
         ],
       ),
     );
